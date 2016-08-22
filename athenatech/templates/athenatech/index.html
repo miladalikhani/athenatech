@@ -1,0 +1,172 @@
+{% load static %}
+<!DOCTYPE html>
+<html dir="rtl">
+	<head>
+		<title>آتناتک</title>
+		<link rel="stylesheet" href="{% static 'athenatech/css/w3.css' %}">
+      	<link type="text/css" rel="stylesheet" href="{% static 'athenatech/css/materialize.min.css' %}"  media="screen,projection">
+		<meta name="viweport" content="width=device-width" initial-scale=1">
+		<meta charset="utf-8">
+		<style>
+			@font-face {
+			font-family: 'nazanin';
+			src: url("{% static 'athenatech/fonts/nazanin.ttf' %}") ;format('truetype');
+			}
+			h5{
+			font-family:nazanin;
+			}
+		</style>
+	</head>
+	<body style="font-family:nazanin;">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      	<script type="text/javascript" src="{% static 'athenatech/js/materialize.min.js' %}"></script>
+      	<script>	
+		  $(document).ready(function(){
+			$('.scrollspy').scrollSpy();
+		  });
+		  $(document).ready(function(){
+      		$('.parallax').parallax();
+    	});
+    	
+    	 $(document).ready(function(){
+		$('.collapsible').collapsible({
+		  accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+		});
+	  	});
+	  	$(document).ready(function(){
+		$('.modal-trigger').leanModal();
+	 	 });
+      	</script>
+		<div id="header" class="w3-card-4 w3-top w3-white">
+			<ul class="w3-padding-large  w3-navbar table-of-content">
+				<a href="#signup_form" > <button class="w3-btn w3-left waves-effect w3-round waves-light w3-red" onclick="$('#signup_form').openModal();"> ثبت نام </button> </a>
+				
+				<form name="login_form" action="{%  url 'athenatech.views.login' %}" method="POST">
+                    {% csrf_token %}
+                    <button class="w3-btn w3-left waves-effect w3-margin-left w3-round waves-light w3-blue" type="submit" > ورود </button>
+				<input name="password" type="password" class="w3-input w3-left w3-margin-left" style="width:10% ; height:5%" placeholder="password"> </input>
+				<input name="username" type="text" class="w3-input w3-left w3-margin-left" style="width:10% ; height:5%;" placeholder="username"> </input>
+				</form>
+				
+				<li class="w3-right"> <a class="waves-effect waves-light w3-hover-red w3-round-large" href="#introduction"> معرفی </a> </li>
+				<li class="w3-right"> <a class="waves-effect waves-light w3-hover-red w3-round-large w3-margin-right" href="#questions"> پرسش های متداول </a> </li>
+				<li class="w3-right"> <a class="waves-effect waves-light w3-hover-red w3-round-large w3-margin-right" href="#costumers"> سرویس گیرندگان </a> </li>
+				<li class="w3-right"> <a class="waves-effect waves-light w3-hover-red w3-round-large w3-margin-right" href="#teamMembers"> اعضای اصلی تیم</a> </li>
+				<li class="w3-right"> <a class="waves-effect waves-light w3-hover-red w3-round-large w3-margin-right" href="#contact-us"> ارتباط با ما  </a> </li>
+			</ul>
+		</div>
+
+		<br/><br/>
+		<div class="parallax-container">
+      		<div class="parallax"><img src="{% static 'athenatech/images/iot5.png' %}"></div>
+    	</div>
+    	
+    	<div id="signup_form" class="modal modal-fixed-footer modal-fixed-header">
+    		<form name="signup_form" action="{% url 'athenatech.views.singup' %}" method="POST">
+                {% csrf_token %}
+    		<div class="modal-header">
+    			<h5 class=" w3-container w3-center"> فرم ثبت نام </h5>
+			</div>
+			<div class="modal-content">
+					<label for="username" class="w3-label"> نام کاربری </label>
+				 	<input name="username" class="w3-input" type="text" placeholder="Username" required> </input>
+				 	
+				 	<label for="password" class="w3-label"> رمز عبور </label>
+				 	<input name="password" class="w3-input" type="password" placeholder="Password" required> </input>
+				 	
+				 	<label for="password_confrim" class="w3-label"> تکرار رمز عبور </label>
+				 	<input name="password_confirm" class="w3-input" type="password" placeholder="Confirm Password" required> </input>
+				 	
+				 	
+				 	<label for="email" class="w3-label"> رایانامه </label>
+				 	<input name="email" class="w3-input" type="email" placeholder="E-Mail" required> </input>
+				 	<br/>
+				 	<br/>
+				 	
+			</div>
+			<div class="modal-footer w3-center">
+				<button href="#" class=" modal-action waves-effect waves-light w3-btn w3-round w3-teal" type="submit"> ثبت نام </button>
+			</div>
+			</form>
+		</div>
+		<div id="content">
+			<div id="introduction" class="w3-card w3-white scrollspy">
+				<h5 style="text-align:center"> معرفی</h5>
+				<p class="w3-container">
+امروزه استفاده از ابزارک‌های هوشمند در جامعه ما رواج پیدا کرده است و روز‌به‌روز استقبال مردم از این ابزارک‌ها بیشتر می‌شود. تیم آتناتک با آماده‌سازی بستر امن ارتباطی این ابزارک‌ها با کاربر و ارائه سرویس‌های تحت‌ وب موردنیاز توسعه‌دهندگان ابزارک‌های هوشمند با استفاده از سامانه بکآتن در راستای توسعه این فناوری فعالیت می‌کند.همچنین با همگام‌سازی و هماهنگ‌کردن ابزارهای هوشمند کاربر تحت نرم‌افزار آتناپ تجربه زندگی امن و هوشمند را در اختیار کاربران ابزارک های هوشمند قرار می‌دهد.
+				</p>
+			</div>
+		
+			<div id="questions" class="w3-card scrollspy w3-white">
+				<h5 style="text-align:center"> پرسش های متداول </h5>
+				<div class="w3-container">
+					<ul class="collapsible" data-collapsible="expandable">
+						<li>
+						  <div class="collapsible-header">ما چه سرویس‌هایی ارائه می‌کنیم؟</div>
+						  <div class="collapsible-body w3-container">
+						  	<p>
+در حال حاضر تیم آتناتک دو خدمت کلی ارائه می‌دهد. سامانه بکآتن که زیر‌ساخت لازم برای توسعه‌دهنده‌های گجت‌های هوشمند را فراهم می کند و نرم‌افزار آتناپ که کنترل زندگی هوشمند را در دستان کاربر قرار می‌دهد
+						  	</p>
+						  </div>
+						</li>
+						<li>
+						  <div class="collapsible-header">نرم‌افزار آتناپ چه‌کار می‌کند؟</div>
+						  <div class="collapsible-body w3-container">
+						  <p>
+نرم‌افزار آتناپ به شما کمک می‌کند تا تمام ابزارک‌های هوشمند خود را با هم هماهنگ کنید و هوشمندانه کنترل زندگی خود را در دست داشته باشید
+						  </p>
+						  </div>
+						</li>
+						<li>
+						  <div class="collapsible-header">سامانه بکآتن چه خدمتی ارائه می‌دهد ؟</div>
+						  <div class="collapsible-body w3-container">
+						  	<p>
+توسعه دهندگان ابزارک های هوشمند با استفاده از سامانه بکاتون می‌توانند با ثبت ابزارک خود در بکآتن از سرویس های نرم‌افزاری تحت سرور مورد نیاز خود استفاده کرده و کنترل ابزارک خود را به کمک آتناپ در اختیار مشتریان خود قرار دهند و از سیستم یکپارچه سازی ابزارک های هوشمند آتناتک استفاده کنند.
+						  	</p>
+						  </div>
+						</li>
+			  		</ul>
+			  	</div>
+
+			</div>
+		
+			<div id="costumers" class="w3-card scrollspy w3-white w3-center">
+				<p> سرویس گیرندگان </p>
+			</div>
+			
+			<div id="teamMembers" class="w3-card scrollspy w3-white w3-center">
+				<h5> اعضای اصلی تیم </h5>
+				<div class="w3-container">
+					<ul class="w3-container"> 
+						<li id="pic" class="w3-container w3-center w3-right" > 
+							<script>
+								var margin = ( screen.width - 830 ) / 2 ;
+								document.getElementById('pic').style.marginRight = "" + margin + "px" ;
+							</script>
+							<a href="http://ce.sharif.edu/~makhodaie"> <img class="w3-circle"  src="{% static 'athenatech/images/amin.jpg' %}" style="width:200px"/> </a>
+							<p> سید محمد امین خدائی </p>
+						</li>
+					
+						<li class="w3-container w3-center w3-right">
+							<a href="http://ce.sharif.edu/~chraghalikhani"><img class="w3-circle"  src="{% static 'athenatech/images/milad.jpg' %}" style="width:200px"/></a>
+							<p> میلاد چراغعلی خانی</p>
+						</li>
+					
+						<li class="w3-container w3-center w3-right">
+							<a href="http://ce.sharif.edu/~alifallahian"><img class="w3-circle" src="{% static 'athenatech/images/nima.jpg' %}" style="width:200px"/></a>
+							<p> نیما فلاحیان</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<div id="contact-us" class="w3-card scrollspy w3-white w3-center">
+				<h5> ارتباط با ما</h5>
+				
+			</div>
+		</div>
+		<div id="footer" class="w3-container w3-padding-left">
+			<p class="w3-left w3-small"> Desinged By <a href="http://ce.sharif.edu/~chraghalikhani" class="hover-blue"> Milad </a> </p>
+		</div>
+	</body>
+</html>
